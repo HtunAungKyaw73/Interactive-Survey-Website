@@ -32,3 +32,8 @@ body {
   max-width: 1140px;
   margin: 0 auto;
 }
+
+/*to disable outline on click*/
+.recharts-wrapper svg * {
+    outline: none;
+}
