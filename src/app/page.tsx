@@ -9,12 +9,13 @@ export default function Home() {
     <div className="font-sans p-8">
        <header className="mb-8">
            <div className="mb-8 flex flex-col items-center">
-               <h1 className="text-xl md:text-2xl font-bold text-gray-800 text-center leading-relaxed ">Myanmar’s Key Stakeholders and their Perceptions <br/> of Sino-Myanmar Relations – A Survey (2024)</h1>
+               <h1 className="text-xl md:text-2xl font-bold text-gray-800 text-center leading-relaxed ">This is a sample survey interactive web page <br/> using RechartsJS, NextJS and Tailwind CSS</h1>
                <a className="text-xs md:text-sm text-center block font-bold cursor-pointer text-white mt-4 p-2 bg-red-500 w-1/3 rounded-md hover:bg-red-600" href="#main">5 Key Findings</a>
            </div>
            <div>
-               <img src={'/hero.png'} alt={"Cover Image"} />
-               <p><i>Photo: AFP</i></p>
+               {/*<img src={'/hero.png'} alt={"Cover Image"} />*/}
+               <div className={"hero"}>Interactive Survey Website</div>
+               <p><i>Photo: Somewhere</i></p>
            </div>
        </header>
       <main id="main" className={"flex flex-col items-center"}>
@@ -27,7 +28,7 @@ export default function Home() {
         </div>
       </main>
       <footer className="flex justify-center mt-5 text-sm">
-        <p>China Survey 2024 | ISP-Myanmar</p>
+        <p>This web page is my sample work for my current organisation | Interactive Survey Result with <b>RechartJS</b></p>
       </footer>
     </div>
   );

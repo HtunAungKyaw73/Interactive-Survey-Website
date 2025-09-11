@@ -18,7 +18,7 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "China Survey 2024",
+  title: "Sample Survey 2024",
 };
 
 export default function RootLayout({
@@ -32,7 +32,6 @@ export default function RootLayout({
         <meta charSet="UTF-8"/>
     </head>
     <body
-        cz-shortcut-listen="true"
         className={`${manrope.variable} antialiased`}
       >
         {children}
