@@ -1,5 +1,4 @@
 'use client';
-import {Data, Payload} from "../../library/data";
 import {
     Bar,
     BarChart,
@@ -36,24 +35,7 @@ const getIntroOfPage = (label:string) => {
     return '';
 };
 
-const CustomLabel = (props: { x: any; y: any; value: any; width: any; height: any; layout: any; }) => {
-    // const { x, y, value, width } = props;
-    // const radius = 10;
-    // return (
-    //     <g>
-    //         <text
-    //             x={x + width / 2}
-    //             y={y - radius}
-    //             fill="#000"
-    //             textAnchor="middle"
-    //             dominantBaseline="middle"
-    //             className={"text-xs"}
-    //         >
-    //             {value + "%"}
-    //         </text>
-    //     </g>
-    // );
-
+const CustomLabel = (props: { x: number; y: number; value: number; width: number; height: number; layout: string; }) => {
     const { x, y, width, height, value, layout } = props;
     const radius = 10;
 
@@ -101,7 +83,7 @@ const CustomTooltip = ({ active, payload, label }: {active: boolean, payload: an
     );
 };
 
-export default function BarChartApp({payload}:{payload: Payload}) {
+export default function BarChartApp({payload}:{payload: any}) {
     // const [activeIndex, setActiveIndex] = useState(0);
     //
     // const handleClick = (index:any) => {
@@ -120,7 +102,7 @@ export default function BarChartApp({payload}:{payload: Payload}) {
             <div className="h-[350] p-3 border-y border-gray-300">
                 <ResponsiveContainer width="100%" height="100%">
                     {/*@ts-ignore*/}
-                    <BarChart  layout={payload?.layout} data={payload?.data} >
+                    <BarChart layout={payload?.layout} data={payload?.data} >
                         <CartesianGrid strokeDasharray="3 3" />
                         {/*axisLine={false} tickLine={false} tick={false}*/}
                         {payload?.layout == "horizontal"? null : <XAxis type="number"  hide/>}
@@ -136,7 +118,7 @@ export default function BarChartApp({payload}:{payload: Payload}) {
                             {/*@ts-ignore*/}
                             {<LabelList dataKey="value" content={<CustomLabel layout={payload?.layout}/>} />}
                             {
-                                payload?.data?.map((entry, index) => (
+                                payload?.data?.map((entry: any, index: number) => (
                                     <Cell key={`cell-${index}`} cursor="pointer" fill={entry.color} />
                                 ))
                             }
