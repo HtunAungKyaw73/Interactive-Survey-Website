@@ -1,6 +1,6 @@
 export const CustomTooltip = ({ active, payload, label }: {active: boolean, payload: any, label: string}) => {
     const isVisible = active && payload && payload.length;
-    console.log("Payload", payload);
+    // console.log("Payload", payload);
     return (
         <div className="custom-tooltip" style={{ visibility: isVisible ? 'visible' : 'hidden' }}>
             {isVisible && (

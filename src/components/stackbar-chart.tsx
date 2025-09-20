@@ -14,7 +14,7 @@ import {
 } from "recharts";
 
 const renderCustomizedLabel = (props: any) => {
-    console.log("Props",props);
+    // console.log("Props",props);
     const { x, y, width, height, value } = props;
     const labelX = x + width / 2;
     const labelY = y + height / 2;
@@ -28,7 +28,7 @@ const renderCustomizedLabel = (props: any) => {
 
 const CustomTooltip = ({ active, payload, label }: {active: boolean, payload: any, label: string}) => {
     const isVisible = active && payload && payload.length;
-    console.log(isVisible, payload, label);
+    // console.log(isVisible, payload, label);
     return (
         <div className="custom-tooltip" style={{ visibility: isVisible ? 'visible' : 'hidden' }}>
             {isVisible && (

@@ -69,7 +69,7 @@ const CustomLabel = (props: { x: number; y: number; value: number; width: number
 };
 const CustomTooltip = ({ active, payload, label }: {active: boolean, payload: any, label: string}) => {
     const isVisible = active && payload && payload.length;
-    console.log(isVisible, payload, label);
+    // console.log(isVisible, payload, label);
     return (
         <div className="custom-tooltip" style={{ visibility: isVisible ? 'visible' : 'hidden' }}>
             {isVisible && (
