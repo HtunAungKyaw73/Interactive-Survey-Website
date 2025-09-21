@@ -14,7 +14,7 @@ export default function LineChartApp({payload}:{payload: LineChartData})
                     {payload?.description}
                 </p>
             </div>
-            <div className="h-[550] p-3 border-y border-gray-300">
+            <div className="h-[550] py-3 border-y border-gray-300">
                 <ResponsiveContainer width="100%" height="100%">
                     <LineChart
                         width={500}
@@ -22,14 +22,14 @@ export default function LineChartApp({payload}:{payload: LineChartData})
                         data={payload?.data}
                         margin={
                             {
-                                top: 20, right: 30, left: 20, bottom: 20
+                                top: 20, right: 30, left: 0, bottom: 20
                             }
                         }
                     >
                         <CartesianGrid strokeDasharray="3 3" />
                         <XAxis dataKey="name" className={"text-xs"} padding={{ left: 30, right: 30 }}/>
                         <YAxis className={"text-xs"}>
-                            <Label angle={-90} value={"Townships"} position="insideLeft" style={{ textAnchor: 'middle', fontWeight: 'bold' }} />
+                            <Label angle={-90} value={"Townships"} className={"hidden md:block"} position="insideLeft" style={{ textAnchor: 'middle', fontWeight: 'bold' }} />
                         </YAxis>
                         { /* @ts-ignore */ }
                         <Tooltip content={<CustomTooltip/>}/>

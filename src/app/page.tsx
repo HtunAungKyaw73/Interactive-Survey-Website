@@ -1,36 +1,33 @@
-import BarChartApp from "@/components/bar-chart";
-import PieChartApp from "@/components/pie-chart";
 import {lineChart, stackBarChart} from "../../library/data";
 import Image from "next/image";
-import ActivePie from "@/components/active-pie";
 import LineChartApp from "@/components/line-chart";
 import StackBarChartApp from "@/components/stackbar-chart";
 
 export default function Home() {
   return (
-    <div className="font-sans p-8">
+    <div className="font-sans p-5">
       <header className="mb-8">
-           <div className="mb-8 flex flex-col items-center">
+           <div className="mb-8 flex flex-col items-center border-b border-gray-300">
                <h1 className="text-xl md:text-3xl font-bold text-gray-800 text-center leading-relaxed ">
                    ISP Research Network: Climate Crisis Findings
                </h1>
                <h3 className={"font-medium"}>Mar 2024 - Feb 2025</h3>
-               <a className="text-xs md:text-sm text-center block font-bold cursor-pointer text-white mt-4 p-2 bg-red-500 w-1/3 rounded-md hover:bg-red-600" href="#main">ISP Socioeconomic Studies</a>
+               <a className="text-xs md:text-sm text-center block mb-3 font-bold cursor-pointer text-white mt-4 p-2 bg-red-500 md:w-1/3 rounded-md hover:bg-red-600" href="#main">ISP Socioeconomic Studies</a>
            </div>
            <div>
                {/*<img src={'/hero.jpg'} height={"700px"} alt={"Cover Image"} />*/}
                <Image src={'/hero.jpg'} width={1000} height={700} alt={"Hero Image"} />
                {/*<div className={"hero"}>Interactive Survey Website</div>*/}
-               <p><i>Photo: AFP</i></p>
+               <p className="text-xs"><i>Photo: AFP</i></p>
            </div>
        </header>
       <main id="main" className={"flex flex-col items-center"}>
-        <section className={"md:w-3/4"}>
+        <section className={"lg:w-3/4"}>
             <LineChartApp payload={lineChart[0]}/>
             <StackBarChartApp payload={stackBarChart[0]}/>
             <StackBarChartApp payload={stackBarChart[1]}/>
         </section>
-        <section className="w-2/3">
+        <section className="lg:w-3/4">
             <div>
                 <h1 className={"text-xl font-bold my-4"}>Survey Methodology</h1>
                 <p className="text-gray-800 mb-4">
@@ -48,18 +45,18 @@ export default function Home() {
             </div>
         </section>
 
-        <section className="w-2/3">
+        <section className="md:w-2/3">
             <div>
-                <h1 className={"text-xl font-bold my-4"}>Related Materials</h1>
+                <h1 className={"text-xl font-bold my-4 border-b border-gray-300"}>Related Materials</h1>
                 <Image src={'/related-1.jpg'} width={500} height={100} alt={"Survey Report"} className={"mb-2"} />
                 <Image src={'/30min.jpg'} width={500} height={100} alt={"30min with ISP"}/>
             </div>
         </section>
       </main>
       <footer className="flex flex-col items-center mt-5 text-sm">
-        <div className="w-2/3">
+        <div className="md:w-2/3">
             <Image src={'/contact.jpg'} width={500} height={100} alt={'contact'} className={"flex"}/>
-            <p className={"mt-4 text-center"}> &copy; ISP-Myanmar <b>Socioeconomic Studies</b> | <b>Research Network Program</b></p>
+            <p className={"mt-4 text-center border-y border-gray-300 p-3"}> &copy; ISP-Myanmar <b>Socioeconomic Studies</b> | <b>Research Network Program</b></p>
         </div>
       </footer>
     </div>

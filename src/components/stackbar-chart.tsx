@@ -68,7 +68,7 @@ export default function StackBarChartApp({payload}: {payload: StackBarData}) {
                     {payload?.description}
                 </p>
             </div>
-            <div className="h-[450] p-3 border-y border-gray-300">
+            <div className="h-[450] py-3 border-y border-gray-300">
                 <ResponsiveContainer width="100%" height="100%">
                     <BarChart
                         //@ts-ignore
