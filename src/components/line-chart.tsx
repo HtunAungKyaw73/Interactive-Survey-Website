@@ -2,9 +2,23 @@
 import {LineChartData} from "../../library/data";
 import {CartesianGrid, Label, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis} from "recharts";
 import {CustomTooltip} from "../../util/custom-tooltip";
+import {useEffect, useState} from "react";
 
 export default function LineChartApp({payload}:{payload: LineChartData})
 {
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+        handleResize();
+        console.log("Resize");
+        window.addEventListener('resize', handleResize);
+
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     return (
         <div className="mb-5">
             <div className="mb-4">
@@ -22,15 +36,20 @@ export default function LineChartApp({payload}:{payload: LineChartData})
                         data={payload?.data}
                         margin={
                             {
-                                top: 20, right: 30, left: 0, bottom: 20
+                                top: 20, right: 0, left: 0, bottom: 20
                             }
                         }
                     >
                         <CartesianGrid strokeDasharray="3 3" />
                         <XAxis dataKey="name" className={"text-xs"} padding={{ left: 30, right: 30 }}/>
-                        <YAxis className={"text-xs"}>
-                            <Label angle={-90} value={"Townships"} className={"hidden md:block"} position="insideLeft" style={{ textAnchor: 'middle', fontWeight: 'bold' }} />
-                        </YAxis>
+                        {/*<YAxis className={isMobile ? "text-xs hidden" : 'text-xs'}>*/}
+                        {/*    <Label angle={-90} value={"Townships"} position="insideLeft" style={{ textAnchor: 'middle', fontWeight: 'bold' }} />*/}
+                        {/*</YAxis>*/}
+                        {!isMobile && (
+                            <YAxis className={"text-xs"}>
+                                <Label angle={-90} value={"Townships"} position="insideLeft" style={{ textAnchor: 'middle', fontWeight: 'bold' }} />
+                            </YAxis>
+                        )}
                         { /* @ts-ignore */ }
                         <Tooltip content={<CustomTooltip/>}/>
                         <Line type="monotone" dataKey="Drought" stroke="#3295A5" strokeWidth={1.5} activeDot={{ r: 5 }}/>

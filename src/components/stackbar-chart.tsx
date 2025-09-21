@@ -78,8 +78,8 @@ export default function StackBarChartApp({payload}: {payload: StackBarData}) {
                         data={payload?.data}
                         margin={{
                             top: 5,
-                            right: 30,
-                            left: 30,
+                            right: 10,
+                            left: 10,
                             bottom: 5,
                         }}
                     >
