@@ -18,7 +18,7 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "Sample Survey 2024",
+  title: "Socioeconomic Survey",
 };
 
 export default function RootLayout({

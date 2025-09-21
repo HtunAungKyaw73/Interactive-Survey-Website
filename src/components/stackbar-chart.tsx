@@ -6,7 +6,7 @@ import {
     CartesianGrid,
     Cell,
     Label,
-    LabelList,
+    LabelList, Legend,
     ResponsiveContainer,
     Tooltip,
     XAxis,
@@ -28,17 +28,24 @@ const renderCustomizedLabel = (props: any) => {
 
 const CustomTooltip = ({ active, payload, label }: {active: boolean, payload: any, label: string}) => {
     const isVisible = active && payload && payload.length;
+    const hoveredSegment = payload[0];
     // console.log(isVisible, payload, label);
     return (
         <div className="custom-tooltip" style={{ visibility: isVisible ? 'visible' : 'hidden' }}>
             {isVisible && (
                 <div className="label bg-gray-100 p-3 text-sm opacity-95">
-                    <p className="font-bold">{`${payload[0].payload.name}`}</p>
-                    {payload.map((pld:any, index:number) => (
-                        <p className={" mb-1"} key={index} >
-                            {`${pld.name}:`} {<span style={{ color: pld.color, fontWeight: "bold" }}>{pld.value}</span>}
-                        </p>
-                    ))}
+                    <p className="font-bold mb-2">{`${payload[0].payload.name}`}</p>
+                    {/*{payload.map((pld:any, index:number) => (*/}
+                    {/*    <p className={" mb-1"} key={index} >*/}
+                    {/*        {`${pld.name}:`} {<span style={{ color: pld.color, fontWeight: "bold" }}>{pld.value}</span>}*/}
+                    {/*    </p>*/}
+                    {/*))}*/}
+                    {/*<p style={{ color: hoveredSegment.color }}>*/}
+                    {/*    {`${hoveredSegment.name}: ${hoveredSegment.value}`}*/}
+                    {/*</p>*/}
+                    <p className={" mb-1"} >
+                        {`${hoveredSegment.name}:`} {<span style={{ color: hoveredSegment.color, fontWeight: "bold" }}>{hoveredSegment.value}</span>}
+                    </p>
                     <p className={"mt-2 text-xs font-bold"}>
                         <svg width="20" height="20" style={{ cursor: "pointer",display: "inline-block" }}>
                             <rect x="3" y="3" width="10" height="10" fill="red">
@@ -61,13 +68,13 @@ export default function StackBarChartApp({payload}: {payload: StackBarData}) {
                     {payload?.description}
                 </p>
             </div>
-            <div className="h-[400] p-3 border-y border-gray-300">
+            <div className="h-[450] p-3 border-y border-gray-300">
                 <ResponsiveContainer width="100%" height="100%">
                     <BarChart
                         //@ts-ignore
                         layout={payload?.layout}
                         width={500}
-                        height={400}
+                        height={450}
                         data={payload?.data}
                         margin={{
                             top: 5,
@@ -80,19 +87,19 @@ export default function StackBarChartApp({payload}: {payload: StackBarData}) {
                         {payload?.layout == "horizontal"? null : <XAxis type="number"  hide/>}
                         {payload?.layout == "vertical"? <YAxis type="category" hide /> : null}
                         {/*@ts-ignore*/}
-                        <Tooltip content={<CustomTooltip/>}/>
-                        <Bar dataKey="Mar" fill={"#5e92cd"} stackId="1" cursor="pointer"></Bar>
-                        <Bar dataKey="Apr" fill={"#a3caed"} stackId="1" cursor="pointer"></Bar>
-                        <Bar dataKey="May" fill={"#7ab399"} stackId="1" cursor="pointer"></Bar>
-                        <Bar dataKey="Jun" fill={"#b5c4a6"} stackId="1" cursor="pointer"></Bar>
-                        <Bar dataKey="Jul" fill={"#eeb990"} stackId="1" cursor="pointer"></Bar>
-                        <Bar dataKey="Aug" fill={"#ee8774"} stackId="1" cursor="pointer"></Bar>
-                        <Bar dataKey="Sep" fill={"#dd83af"} stackId="1" cursor="pointer"></Bar>
-                        <Bar dataKey="Oct" fill={"#9e93c6"} stackId="1" cursor="pointer"></Bar>
-                        <Bar dataKey="Nov" fill={"#cbbba0"} stackId="1" cursor="pointer"></Bar>
-                        <Bar dataKey="Dec" fill={"#7b6a58"} stackId="1" cursor="pointer"></Bar>
-                        <Bar dataKey="Jan" fill={"#3295A5"} stackId="1" cursor="pointer"></Bar>
-                        <Bar dataKey="Feb" fill={"#3295A5"} stackId="1" cursor="pointer"></Bar>
+                        <Tooltip content={<CustomTooltip/>} shared={false}/>
+                        <Bar dataKey="Mar" fill={"#5e92cd"} stackId="1" cursor="pointer" barSize={40}></Bar>
+                        <Bar dataKey="Apr" fill={"#a3caed"} stackId="1" cursor="pointer" barSize={40}></Bar>
+                        <Bar dataKey="May" fill={"#7ab399"} stackId="1" cursor="pointer" barSize={40}></Bar>
+                        <Bar dataKey="Jun" fill={"#b5c4a6"} stackId="1" cursor="pointer" barSize={40}></Bar>
+                        <Bar dataKey="Jul" fill={"#eeb990"} stackId="1" cursor="pointer" barSize={40}></Bar>
+                        <Bar dataKey="Aug" fill={"#ee8774"} stackId="1" cursor="pointer" barSize={40}></Bar>
+                        <Bar dataKey="Sep" fill={"#dd83af"} stackId="1" cursor="pointer" barSize={40}></Bar>
+                        <Bar dataKey="Oct" fill={"#9e93c6"} stackId="1" cursor="pointer" barSize={40}></Bar>
+                        <Bar dataKey="Nov" fill={"#cbbba0"} stackId="1" cursor="pointer" barSize={40}></Bar>
+                        <Bar dataKey="Dec" fill={"#7b6a58"} stackId="1" cursor="pointer" barSize={40}></Bar>
+                        <Bar dataKey="Jan" fill={"#3295A5"} stackId="1" cursor="pointer" barSize={40}></Bar>
+                        <Bar dataKey="Feb" fill={"#3295A5"} stackId="1" cursor="pointer" barSize={40}></Bar>
                     </BarChart>
                 </ResponsiveContainer>
             </div>
