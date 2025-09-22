@@ -1,23 +1,12 @@
 'use client';
 import {LineChartData} from "../../library/data";
-import {CartesianGrid, Label, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis} from "recharts";
+import {CartesianGrid, Label, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis} from "recharts";
 import {CustomTooltip} from "../../util/custom-tooltip";
-import {useEffect, useState} from "react";
+import useIsMobile from "../../util/useIsMobile";
 
 export default function LineChartApp({payload}:{payload: LineChartData})
 {
-    const [isMobile, setIsMobile] = useState(false);
-
-    useEffect(() => {
-        const handleResize = () => {
-            setIsMobile(window.innerWidth < 768);
-        };
-        handleResize();
-        console.log("Resize");
-        window.addEventListener('resize', handleResize);
-
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
+    const isMobile = useIsMobile();
 
     return (
         <div className="mb-5">
@@ -50,7 +39,7 @@ export default function LineChartApp({payload}:{payload: LineChartData})
                                 <Label angle={-90} value={"Townships"} position="insideLeft" style={{ textAnchor: 'middle', fontWeight: 'bold' }} />
                             </YAxis>
                         )}
-                        { /* @ts-ignore */ }
+                        { /* @typescript-eslint/ban-ts-comment */ }
                         <Tooltip content={<CustomTooltip/>}/>
                         <Line type="monotone" dataKey="Drought" stroke="#3295A5" strokeWidth={1.5} activeDot={{ r: 5 }}/>
                         <Line type="monotone" dataKey="Water Scarcity" stroke="#C3B69B" strokeWidth={1.5} activeDot={{ r: 5 }}/>
