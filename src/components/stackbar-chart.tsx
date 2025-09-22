@@ -11,7 +11,7 @@ import {
 } from "recharts";
 import useIsMobile from "../../util/useIsMobile";
 
-const CustomTooltip = ({ active, payload }: {active: boolean, payload: StackBarData}) => {
+const CustomTooltip = ({ active, payload }: {active: boolean, payload: any}) => {
     const isVisible = active && payload && payload.length;
     const hoveredSegment = payload[0];
     return (
@@ -57,6 +57,7 @@ export default function StackBarChartApp({payload}: {payload: StackBarData}) {
                 <ResponsiveContainer width="100%" height="100%">
                     <BarChart
                         //@typescript-eslint/ban-ts-comment
+                        // @ts-ignore
                         layout={payload?.layout}
                         width={500}
                         height={450}
@@ -72,7 +73,7 @@ export default function StackBarChartApp({payload}: {payload: StackBarData}) {
                         {/*@typescript-eslint/ban-ts-comment*/}
                         {payload?.layout == "horizontal"? (!isMobile && <XAxis dataKey="name" className={"text-xs font-bold"} />) : <XAxis type="number" hide/>}
                         {payload?.layout == "vertical"? <YAxis type="category" hide/> : <YAxis type="number" hide/>}
-                        {/*@typescript-eslint/ban-ts-comment*/}
+                        {/*@typescript-eslint/ban-ts-comment*/ /*@ts-ignore*/}
                         <Tooltip content={<CustomTooltip/>} shared={false} />
                         <Bar dataKey="Mar" fill={"#5e92cd"} stackId="1" cursor="pointer" barSize={70}></Bar>
                         <Bar dataKey="Apr" fill={"#a3caed"} stackId="1" cursor="pointer" barSize={70}></Bar>

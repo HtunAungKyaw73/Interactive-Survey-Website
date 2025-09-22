@@ -39,7 +39,7 @@ export default function LineChartApp({payload}:{payload: LineChartData})
                                 <Label angle={-90} value={"Townships"} position="insideLeft" style={{ textAnchor: 'middle', fontWeight: 'bold' }} />
                             </YAxis>
                         )}
-                        { /* @typescript-eslint/ban-ts-comment */ }
+                        { /* @typescript-eslint/ban-ts-comment */ /* @ts-ignore*/}
                         <Tooltip content={<CustomTooltip/>}/>
                         <Line type="monotone" dataKey="Drought" stroke="#3295A5" strokeWidth={1.5} activeDot={{ r: 5 }}/>
                         <Line type="monotone" dataKey="Water Scarcity" stroke="#C3B69B" strokeWidth={1.5} activeDot={{ r: 5 }}/>
